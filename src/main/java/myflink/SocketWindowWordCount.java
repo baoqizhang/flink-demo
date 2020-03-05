@@ -15,7 +15,7 @@ public class SocketWindowWordCount {
         final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
         // 通过连接 socket 获取输入数据，这里连接到本地9000端口，如果9000端口已被占用，请换一个端口
         DataStream<String> text = env.socketTextStream("localhost", 9000, "\n");
-
+        System.out.println("bug修复");
         // 解析数据，按 word 分组，开窗，聚合
         DataStream<Tuple2<String, Integer>> windowCounts = text
                 .flatMap(new FlatMapFunction<String, Tuple2<String, Integer>>() {
